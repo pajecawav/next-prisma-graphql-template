@@ -9,7 +9,7 @@
 		"build": "next build",
 		"vercel-build": "yarn generate && next build && prisma migrate deploy",
 		"start": "next start",
-		"generate": "concurrently -c 'yellow,green' 'yarn:generate:prisma' 'yarn:generate:graphql'",
+		"generate": "yarn generate:prisma && yarn generate:graphql",
 		"generate:prisma": "prisma generate",
 		"generate:graphql": "graphql-codegen",
 		"generate:theme-typings": "chakra-cli tokens src/theme.ts",
