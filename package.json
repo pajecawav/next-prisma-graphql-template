@@ -53,6 +53,7 @@
 		"@graphql-codegen/typescript": "^2.4.1",
 		"@graphql-codegen/typescript-operations": "^2.2.1",
 		"@graphql-codegen/typescript-react-apollo": "^3.2.2",
+		"@next/bundle-analyzer": "^12.1.5",
 		"@types/node": "^16.11.11",
 		"@types/nprogress": "^0.2.0",
 		"@types/react": "^18.0.5",

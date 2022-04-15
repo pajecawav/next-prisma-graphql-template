@@ -9,4 +9,11 @@ const config = {
 	},
 };
 
-module.exports = config;
+if (process.env.ANALYZE === "true") {
+	const withBundleAnalyzer = require("@next/bundle-analyzer")({
+		enabled: true,
+	});
+	module.exports = withBundleAnalyzer(config);
+} else {
+	module.exports = config;
+}
