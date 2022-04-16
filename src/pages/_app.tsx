@@ -1,20 +1,15 @@
 import { Auth } from "@/components/Auth";
 import { DefaultAppShell } from "@/components/DefaultAppShell";
 import { NProgress } from "@/components/NProgress";
+import { client } from "@/graphql/client";
 import "@/styles/globals.css";
 import { theme } from "@/theme";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React, { Fragment } from "react";
-
-const client = new ApolloClient({
-	uri: process.env.NEXT_PUBLIC_GRAPHQL_URL,
-	cache: new InMemoryCache(),
-	credentials: "same-origin",
-});
 
 export default function MyApp({
 	Component,

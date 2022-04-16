@@ -19,6 +19,7 @@ export function Header() {
 		<HStack w="full" gap={2} py={3}>
 			<IconButton
 				icon={colorMode === "light" ? <SunIcon /> : <MoonIcon />}
+				flex="0"
 				size="xs"
 				variant="ghost"
 				onClick={() => toggleColorMode()}

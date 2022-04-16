@@ -7,8 +7,7 @@
 		"dev:compile": "dotenv yarn generate:graphql --watch",
 		"dev:docker": "docker-compose up",
 		"build": "next build",
-		"vercel-build": "yarn generate && next build && prisma migrate deploy",
-		"start": "next start",
+		"start": "prisma migrate deploy && next start",
 		"generate": "yarn generate:prisma && yarn generate:graphql",
 		"generate:prisma": "prisma generate",
 		"generate:graphql": "dotenv yarn graphql-codegen",
@@ -18,7 +17,7 @@
 		"tsc": "tsc --noEmit",
 		"format": "prettier 'src/**/*.{js,jsx,ts,tsx,css}' --write",
 		"format:list": "prettier --list-different 'src/**/*.{js,ts,jsx,tsx,css}'",
-		"postinstall": "is-ci || husky install"
+		"prepare": "is-ci || husky install"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.5.6",
@@ -64,7 +63,6 @@
 		"eslint": "^8",
 		"eslint-config-next": "^12.1.5",
 		"husky": "^7.0.4",
-		"is-ci": "^3.0.1",
 		"prettier": "^2.5.0",
 		"prisma": "^3.6.0",
 		"tsconfig-paths": "^3.12.0",
