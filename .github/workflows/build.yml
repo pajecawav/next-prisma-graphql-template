@@ -2,8 +2,7 @@ name: Build and lint
 
 on:
     push:
-        # TODO: enable lint/build jobs after Prisma env variable issue is fixed
-        branches-ignore: "**"
+        branches: [master]
 
 jobs:
     lint:
