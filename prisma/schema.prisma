@@ -1,5 +1,3 @@
-// See also: https://next-auth.js.org/adapters/prisma
-
 generator client {
   provider      = "prisma-client-js"
   // TODO: without 'linux-musl' doesn't work inside the Docker container
@@ -53,7 +51,6 @@ model VerificationToken {
 }
 
 model User {
-
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
