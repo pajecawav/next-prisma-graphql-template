@@ -86,7 +86,3 @@ export function TodosListEntry({ todo }: Props) {
 		</HStack>
 	);
 }
-
-TodosListEntry.fragments = {
-	todo: TodosListEntry_todo,
-};

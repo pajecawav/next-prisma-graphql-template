@@ -7,12 +7,11 @@ import gql from "graphql-tag";
 import React from "react";
 
 export const GET_ALL_TODOS = gql`
-	${TodosList.fragments.todo}
-
 	query GetAllTodos {
 		todos {
 			id
-			...TodosList_todo
+			title
+			completed
 		}
 	}
 `;

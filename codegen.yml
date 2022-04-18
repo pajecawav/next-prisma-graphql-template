@@ -11,6 +11,7 @@ generates:
     src/__generated__/operations.ts:
         plugins:
             - typescript
-            - typescript-operations
+            - typescript-operations:
+                  dedupeOperationSuffix: true
             - named-operations-object
             # - typescript-react-apollo
