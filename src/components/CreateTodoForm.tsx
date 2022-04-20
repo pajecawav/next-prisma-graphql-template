@@ -1,3 +1,4 @@
+import { useZodForm } from "@/hooks/useZodForm";
 import { GET_ALL_TODOS } from "@/pages/todos";
 import {
 	CreateNewTodoMutation,
@@ -6,7 +7,8 @@ import {
 } from "@/__generated__/operations";
 import { gql, useMutation } from "@apollo/client";
 import { Button, HStack, Input } from "@chakra-ui/react";
-import React, { FormEvent, useState } from "react";
+import React from "react";
+import { object, string } from "zod";
 
 const CREATE_NEW_TODO = gql`
 	mutation CreateNewTodo($input: CreateTodoInput!) {
@@ -19,7 +21,9 @@ const CREATE_NEW_TODO = gql`
 `;
 
 export function CreateTodoForm() {
-	const [title, setTitle] = useState("");
+	const form = useZodForm({
+		schema: object({ title: string().min(1) }),
+	});
 
 	const [createTodo, { loading }] = useMutation<
 		CreateNewTodoMutation,
@@ -41,21 +45,20 @@ export function CreateTodoForm() {
 		},
 	});
 
-	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		await createTodo({ variables: { input: { title } } });
-		setTitle("");
-	};
-
 	return (
-		<form onSubmit={e => handleSubmit(e)}>
+		<form
+			onSubmit={form.handleSubmit(async values => {
+				await createTodo({
+					variables: { input: { title: values.title } },
+				});
+				form.reset();
+			})}
+		>
 			<HStack gap={2}>
 				<Input
 					flex="grow"
-					type="text"
 					placeholder="New todo"
-					value={title}
-					onChange={e => setTitle(e.target.value)}
+					{...form.register("title")}
 				/>
 				<Button type="submit" colorScheme="teal" isLoading={loading}>
 					Add
