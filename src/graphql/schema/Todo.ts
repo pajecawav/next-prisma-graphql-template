@@ -13,9 +13,7 @@ export const TodoObject = builder.objectRef<Todo>("Todo").implement({
 builder.queryField("todos", t =>
 	t.field({
 		type: [TodoObject],
-		authScopes: {
-			user: true,
-		},
+		authScopes: { user: true },
 		resolve: (_root, _args, { user }) => {
 			return db.todo.findMany({
 				where: { userId: user!.id },
@@ -29,6 +27,7 @@ builder.queryField("todo", t =>
 	t.field({
 		type: TodoObject,
 		nullable: true,
+		authScopes: { user: true },
 		args: {
 			id: t.arg.string({ required: true }),
 		},
@@ -49,10 +48,12 @@ const CreateTodoInput = builder.inputType("CreateTodoInput", {
 		}),
 	}),
 });
+
 builder.mutationField("createTodo", t =>
 	t.field({
 		type: TodoObject,
 		nullable: false,
+		authScopes: { user: true },
 		args: {
 			input: t.arg({
 				type: CreateTodoInput,
@@ -78,10 +79,12 @@ const UpdateTodoInput = builder.inputType("UpdateTodoInput", {
 		}),
 	}),
 });
+
 builder.mutationField("updateTodo", t =>
 	t.field({
 		type: TodoObject,
 		nullable: false,
+		authScopes: { user: true },
 		args: {
 			id: t.arg.string({ required: true }),
 			input: t.arg({
@@ -109,6 +112,7 @@ builder.mutationField("updateTodo", t =>
 builder.mutationField("deleteTodo", t =>
 	t.boolean({
 		nullable: false,
+		authScopes: { user: true },
 		args: {
 			id: t.arg.string({ required: true }),
 		},
