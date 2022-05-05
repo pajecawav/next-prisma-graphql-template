@@ -25,6 +25,8 @@ jobs:
 
             - name: Generate types
               run: yarn generate
+              env:
+                  DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
             - name: Format
               run: yarn format:check
@@ -53,6 +55,8 @@ jobs:
 
             - name: Generate types
               run: yarn generate
+              env:
+                  DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
 
             - name: Build project
               run: yarn build
