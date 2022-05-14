@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import isCi from "is-ci";
 
 // https://www.prisma.io/docs/support/help-articles/nextjs-prisma-client-dev-practices#problem
 declare global {

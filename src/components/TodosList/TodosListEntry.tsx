@@ -58,7 +58,7 @@ export function TodosListEntry({ todo }: Props) {
 				flex={1}
 				alignItems="center"
 				fontSize="xl"
-				isTruncated
+				noOfLines={1}
 				textDecoration={todo.completed ? "line-through" : undefined}
 				color={todo.completed ? "gray.500" : undefined}
 			>
