@@ -41,7 +41,7 @@
 		"@pothos/plugin-scope-auth": "^3.9.0",
 		"@pothos/plugin-validation": "^3.4.0",
 		"@prisma/client": "^3.14.0",
-		"apollo-server-core": "^3.7.0",
+		"apollo-server-core": "^3.10.1",
 		"apollo-server-micro": "^3.7.0",
 		"framer-motion": "^6.3.3",
 		"graphql": "^16.5.0",
